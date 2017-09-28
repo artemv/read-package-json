@@ -6,3 +6,5 @@ node_js:
 sudo: false
 before_install:
   - npm install -g npm@latest
+script:
+  - git pack-refs --all && npm test
