@@ -1,3 +1,4 @@
+var childProcess = require('child_process')
 var fs = require('fs')
 var path = require('path')
 
@@ -15,11 +16,22 @@ try {
   isGit = false
 }
 
-tap.test('basic test', function (t) {
+function basicTest (t) {
   var p = path.resolve(__dirname, '../package.json')
   readJson(p, function (er, data) {
     if (er) throw er
     basic_(t, data)
+  })
+}
+
+tap.test('basic tests', function (t) {
+  t.plan(2)
+
+  t.test('basic test', basicTest)
+
+  t.test('git-pack-refs vs gitHead', function (t) {
+    childProcess.execSync('git pack-refs --all')
+    basicTest(t)
   })
 })
 
