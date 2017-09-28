@@ -31,14 +31,8 @@ tap.test('basic tests', function (t) {
 
   if (isGit) {
     t.test('git-pack-refs vs gitHead', function (tt) {
-      new Promise(function (resolve) {
-        childProcess.exec('git pack-refs --all', function () {
-          resolve()
-        })
-      }).then(function () {
-        basicTest(tt)
-      }
-      )
+      childProcess.execSync('git pack-refs --all')
+      basicTest(tt)
     })
   }
 })

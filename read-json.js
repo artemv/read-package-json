@@ -337,7 +337,6 @@ function githead (file, data, cb) {
 function githead_ (file, data, dir, head, cb) {
   if (!head.match(/^ref: /)) {
     data.gitHead = head.trim()
-    console.log('githead_ 1', data.gitHead);
     return cb(null, data)
   }
   var headFile = head.replace(/^ref: /, '').trim()
@@ -346,7 +345,6 @@ function githead_ (file, data, dir, head, cb) {
     if (er || !head) return cb(null, data)
     head = head.replace(/^ref: /, '').trim()
     data.gitHead = head
-    console.log('githead_ 2', data.gitHead);
     return cb(null, data)
   })
 }
