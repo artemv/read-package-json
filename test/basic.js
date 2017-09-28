@@ -25,14 +25,16 @@ function basicTest (t) {
 }
 
 tap.test('basic tests', function (t) {
-  t.plan(2)
+  t.plan(isGit ? 2 : 1)
 
   t.test('basic test', basicTest)
 
-  t.test('git-pack-refs vs gitHead', function (t) {
-    childProcess.execSync('git pack-refs --all')
-    basicTest(t)
-  })
+  if (isGit) {
+    t.test('git-pack-refs vs gitHead', function (tt) {
+      childProcess.execSync('git pack-refs --all')
+      basicTest(tt)
+    })
+  }
 })
 
 function basic_ (t, data) {
