@@ -6,8 +6,3 @@ node_js:
 sudo: false
 before_install:
   - npm install -g npm@latest
-install:
-  - git clone --depth=50 https://github.com/$TRAVIS_REPO_SLUG.git $TRAVIS_REPO_SLUG
-  - cd $TRAVIS_REPO_SLUG
-  - git reset --hard $TRAVIS_COMMIT
-  - npm install
