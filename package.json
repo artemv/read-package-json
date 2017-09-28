@@ -9,7 +9,7 @@
   },
   "main": "read-json.js",
   "scripts": {
-    "test": "standard && tap -J test/*.js"
+    "test": "standard && tap -J test/*.js && ls -la .git/refs/heads"
   },
   "dependencies": {
     "glob": "^7.1.1",
